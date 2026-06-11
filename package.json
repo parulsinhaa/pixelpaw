@@ -1,0 +1,23 @@
+{
+  "name": "pixelpaw",
+  "version": "1.0.0",
+  "description": "A tiny pixel companion that lives on your desktop.",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "preview": "node server.js",
+    "lint": "node --check src/script.js && node --check src/modules/sprite-engine.js && node --check src/modules/pomodoro.js && node --check src/modules/notifications.js && node --check src/modules/customization.js && node --check src/modules/storage.js && node --check electron/main.js && node --check electron/preload.js"
+  },
+  "keywords": [
+    "electron",
+    "desktop-pet",
+    "pixel-art",
+    "pomodoro"
+  ],
+  "author": "PixelPaw",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^31.7.7"
+  }
+}

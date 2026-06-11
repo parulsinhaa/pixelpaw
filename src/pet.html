@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PixelPaw Pet</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="pet-window">
+  <div id="desktop-pet" class="pet-renderer pet-xl draggable"></div>
+  <div class="speech pixel-border desktop-speech" id="desktop-speech">ready.</div>
+  <script type="module">
+    import { SpritePet } from './modules/sprite-engine.js';
+    const node = document.querySelector('#desktop-pet');
+    const speech = document.querySelector('#desktop-speech');
+    const pet = new SpritePet(node, { state: 'idle', skin: 'black', fps: 10 });
+    window.addEventListener('mousemove', (event) => pet.lookAt(event.clientX, event.clientY));
+    window.pixelpaw?.onPetMood?.((mood) => {
+      pet.setState(mood);
+      speech.textContent = mood === 'stretch' ? "let's stretch!" : mood;
+    });
+    window.pixelpaw?.onFocus?.(() => {
+      pet.setState('typing');
+      speech.textContent = 'guarding your focus';
+    });
+  </script>
+</body>
+</html>
